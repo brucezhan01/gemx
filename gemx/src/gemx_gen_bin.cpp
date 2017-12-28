@@ -48,6 +48,7 @@
 
 int main(int argc, char** argv)
 {
+  printf("gemx_gen_bin::main() start\n");
   if (argc < 3 ){
     printf("ERROR: passed %d arguments instead of %d, exiting\n",
            argc, 3);
@@ -338,6 +339,8 @@ int main(int argc, char** argv)
   } else {
     assert(0); // Unknown user command
   }
+
+  printf("gemx_gen_bin::main() end succefully\n");
   
   return EXIT_SUCCESS;
 }

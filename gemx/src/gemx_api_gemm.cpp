@@ -76,6 +76,7 @@ bool checkDim(unsigned int p_Val, unsigned int p_Mod, unsigned int p_Min) {
 
 float getBoardFreqMHz(unsigned int p_BoardId) {
   std::string l_freqCmd = "$XILINX_OPENCL/runtime/bin/xbsak query -d" + std::to_string(p_BoardId);;
+  std::cout <<"DEBUG: query board info with command - " << l_freqCmd << std::endl;
   float l_freq = -1;
   char l_lineBuf[256];
   std::shared_ptr<FILE> l_pipe(popen(l_freqCmd.c_str(), "r"), pclose);
@@ -84,7 +85,7 @@ float getBoardFreqMHz(unsigned int p_BoardId) {
   bool l_nextLine_isFreq = false;
   while (l_pipe && fgets(l_lineBuf, 256, l_pipe.get()) ) {
     std::string l_line(l_lineBuf);
-    //std::cout << "DEBUG: read line " << l_line << std::endl;
+    std::cout << "DEBUG: read line " << l_line << std::endl;
     if (l_nextLine_isFreq) {
       std::string l_prefix, l_val, l_mhz;
       std::stringstream l_ss(l_line);

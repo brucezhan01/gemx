@@ -138,6 +138,12 @@ else ifeq (${GEMX_part},vu9pf1)
   DSA_PLATFORM=xilinx_aws-vu9p-f1_4ddr-xpr-2pr_${DSA}
   XDEVICE_REPO_PATH=$(XILINX_SDX)/platforms/${DSA_PLATFORM}/hw
   PLATFORM_REPO_PATH=$(XILINX_SDX)/platforms/${DSA_PLATFORM}/hw
+else ifeq (${GEMX_part},kcu1500)
+  DSA=4_0
+  XDEVICE=xilinx:kcu1500:4ddr-xpr:$(subst _,.,${DSA})
+  DSA_PLATFORM=xilinx_kcu1500_4ddr-xpr_${DSA}
+  XDEVICE_REPO_PATH=$(XILINX_SDX)/platforms
+  PLATFORM_REPO_PATH=$(XILINX_SDX)/platforms/${DSA_PLATFORM}
 else
   $(error Unknown GEMX_part ${GEMX_part})
 endif
@@ -454,6 +460,11 @@ else ifeq (${GEMX_part},vu9pf1)
   K1_DDR = 2
   K2_DDR = 0
   K3_DDR = 1
+else ifeq (${GEMX_part},kcu1500)
+  K0_DDR = 0
+  K1_DDR = 1
+  K2_DDR = 2
+  K3_DDR = 3
 endif
 
 CLCC_LINK_OPT += --xp misc:map_connect=add.kernel.gemxKernel_0.M_AXI_GMEMM.core.OCL_REGION_0.M0${K0_DDR}_AXI
@@ -593,7 +604,7 @@ run_hw: host
 
 run_em_int: xconfig host xbin
 	@echo INFO: kernel xclbin frequency is $(shell ${XCLBIN_FREQ} ${XCLBIN}) MHz
-	XCL_EMULATION_MODE=true XILINX_OPENCL=${XILINX_SDX} ${HOST_EXE} ${HOST_ARGS}
+	env XCL_EMULATION_MODE=true LD_LIBRARY_PATH=${XILINX_SDX}/lib/lnx64.o:/usr/lib/x86_64-linux-gnu ${HOST_EXE} ${HOST_ARGS}
 	+make check
 
 run_multiGemm_em_int: xconfig api_gemm xbin
