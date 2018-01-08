@@ -77,7 +77,7 @@ array set opt {
   spmvNumCblocks    1024
   spmvFloatPerDesc     4
   argPipeline  2
-  part        ku115
+  part        kcu1500
   doCsim      0
   doRTLsynth  1
   doRTLsim    0
@@ -101,12 +101,16 @@ foreach o [lsort [array names opt]] {
 }
 #quit
 
+set XILINX_SDX $env(XILINX_SDX)
+set XILINX_VIVADO $env(XILINX_VIVADO)
 #set BOOST_SRC /public/bugcases/CR/953000-953999/953328/BOOST_SRC
 #set BOOST_LIB /public/bugcases/CR/953000-953999/953328/BOOST_LIB
-set BOOST_SRC /public/bugcases/CR/953000-953999/953328/boost_20170627/include
-set BOOST_LIB /public/bugcases/CR/953000-953999/953328/boost_20170627/lib
-set CFLAGS_K "-I $pwd/src  $OPT_FLAGS -D GEMX_kernelId=0 "
-set CFLAGS_H "$CFLAGS_K -g -I $BOOST_SRC"
+#set BOOST_SRC /public/bugcases/CR/953000-953999/953328/boost_20170627/include
+#set BOOST_LIB /public/bugcases/CR/953000-953999/953328/boost_20170627/lib
+set BOOST_SRC ../boost/src
+set BOOST_LIB ../boost/lib
+set CFLAGS_K "-I $pwd/src  $OPT_FLAGS -D GEMX_kernelId=0 -D TEST_SDX=1"
+set CFLAGS_H "$CFLAGS_K -g -O2 -std=c++0x -DCL_USE_DEPRECATED_OPENCL_1_1_APIS -DBOOST_COMPUTE_DEBUG_KERNEL_COMPILATION -DBOOST_COMPUTE_HAVE_THREAD_LOCAL -DBOOST_COMPUTE_THREAD_SAFE -D FLOW_HLS_CSIM -I$BOOST_SRC -I${XILINX_SDX}/Vivado_HLS/include -I${XILINX_VIVADO}/include -I${XILINX_SDX}/runtime/include/1_2"
 
 
 set proj_dir [format prj_hls_%s_%sx%s  $opt(part) $opt(gemmMeshRows) $opt(gemmMeshCols) ]
@@ -122,6 +126,8 @@ config_compile -ignore_long_run_time
 #config_schedule -effort medium -verbose
 
 if {$opt(part) == "ku115"} {
+  set_part {xcku115-flvb2104-2-e} -tool vivado
+} elseif {$opt(part) == "kcu1500"} {
   set_part {xcku115-flvb2104-2-e} -tool vivado
 } else {
   set_part {xcvu9p-flgb2104-2-i} -tool vivado
