@@ -1,0 +1,104 @@
+SDAccel Profile Summary
+Generated on: 2018-01-08 14:21:06
+Msec since Epoch: 1515392466861
+Profiled application: gemx_api_gemm.exe
+Target platform: Xilinx
+Target devices: xilinx:kcu1500:4ddr-xpr:4.0-0
+Flow mode: System Run
+Tool version: 2017.1
+
+OpenCL API Calls
+API Name,Number Of Calls,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+clCreateProgramWithBinary,1,126.2,126.2,126.2,126.2,
+clWaitForEvents,4,120.209,0.009,30.0523,105.426,
+clCreateBuffer,4,46.5847,10.0249,11.6462,13.1204,
+clReleaseKernel,4,0.764097,0.179503,0.191024,0.200796,
+clReleaseProgram,1,0.510926,0.510926,0.510926,0.510926,
+clEnqueueMigrateMemObjects,8,0.464675,0.027,0.0580844,0.137211,
+clEnqueueNDRangeKernel,4,0.183087,0.028542,0.0457718,0.096252,
+clReleaseEvent,20,0.154339,0.0045,0.00771695,0.018001,
+clRetainEvent,8,0.126002,0.0045,0.0157502,0.049501,
+clSetKernelArg,8,0.124128,0.0045,0.015516,0.085543,
+clGetKernelInfo,16,0.099001,0.0045,0.00618756,0.0135,
+clGetDeviceInfo,21,0.096131,0.0045,0.00457767,0.005626,
+clReleaseContext,11,0.064793,0.0045,0.00589027,0.010834,
+clRetainContext,10,0.054375,0.004458,0.0054375,0.009,
+clCreateKernel,4,0.048625,0.00775,0.0121562,0.022875,
+clGetCommandQueueInfo,4,0.023292,0.0045,0.005823,0.009,
+clReleaseMemObject,4,0.018333,0.0045,0.00458325,0.004833,
+clGetPlatformIDs,2,0.015209,0.0045,0.0076045,0.010709,
+clGetContextInfo,2,0.015,0.0045,0.0075,0.0105,
+clCreateContext,1,0.014459,0.014459,0.014459,0.014459,
+clBuildProgram,1,0.0135,0.0135,0.0135,0.0135,
+clGetDeviceIDs,2,0.011417,0.0045,0.0057085,0.006917,
+clReleaseCommandQueue,1,0.00575,0.00575,0.00575,0.00575,
+clCreateCommandQueue,1,0.005667,0.005667,0.005667,0.005667,
+
+
+Kernel Execution
+Kernel,Number Of Enqueues,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+gemxKernel_0,1,76.613,76.613,76.613,76.613,
+gemxKernel_1,1,76.5905,76.5905,76.5905,76.5905,
+gemxKernel_2,1,76.6072,76.6072,76.6072,76.6072,
+gemxKernel_3,1,76.5884,76.5884,76.5884,76.5884,
+
+
+Compute Unit Utilization
+Device,Compute Unit,Kernel,Global Work Size,Local Work Size,Number Of Calls,Total Time (ms),Minimum Time (ms),Average Time (ms),Maximum Time (ms),
+xilinx:kcu1500:4ddr-xpr:4.0-0,gemxKernel_0,gemxKernel_0,1:1:1,1:1:1,1,76.5961,76.5961,76.5961,76.5961,
+xilinx:kcu1500:4ddr-xpr:4.0-0,gemxKernel_1,gemxKernel_1,1:1:1,1:1:1,1,76.5765,76.5765,76.5765,76.5765,
+xilinx:kcu1500:4ddr-xpr:4.0-0,gemxKernel_2,gemxKernel_2,1:1:1,1:1:1,1,76.5853,76.5853,76.5853,76.5853,
+xilinx:kcu1500:4ddr-xpr:4.0-0,gemxKernel_3,gemxKernel_3,1:1:1,1:1:1,1,76.5783,76.5783,76.5783,76.5783,
+
+
+Data Transfer: Host and Global Memory
+Context:Number of Devices,Transfer Type,Number Of Transfers,Transfer Rate (MB/s),Average Bandwidth Utilization (%),Average Size (KB),Total Time (ms),Average Time (ms),
+context0:1,READ,4,1724.109831,17.959477,25174,58.404669,14.601167,
+context0:1,WRITE,4,1683.722658,17.538778,25174,59.805612,14.951403,
+
+
+Data Transfer: Kernels and Global Memory
+Device,Transfer Type,Number Of Transfers,Transfer Rate (MB/s),Average Bandwidth Utilization (%),Average Size (KB),Average Time (ns),Device Execution Time (ms),
+xilinx:kcu1500:4ddr-xpr:4.0-0,READ,1048640,5881.26,51.0526,0.511973,648.309,91.2858,
+xilinx:kcu1500:4ddr-xpr:4.0-0,WRITE,65600,367.621,3.19115,0.511563,72.7314,91.2858,
+
+
+Top Data Transfer: Kernels and Global Memory
+Device,Kernel Name,Number of Transfers,Average Bytes per Transfer,Transfer Efficiency (%),Total Data Transfer (MB),Total Write (MB),Total Read (MB),Transfer Rate (MB/s),Average Bandwidth Utilization (%),
+xilinx:kcu1500:4ddr-xpr:4.0-0,ALL,1114240,511.949,12.4987,570.434,33.5585,536.875,6248.88,54.2437,
+
+
+Top Kernel Execution
+Kernel Instance Address,Kernel,Context ID,Command Queue ID,Device,Start Time (ms),Duration (ms),Global Work Size,Local Work Size,
+7121920,gemxKernel_0,0,0,xilinx:kcu1500:4ddr-xpr:4.0-0,288.675,76.613,1:1:1,1:1:1,
+7125248,gemxKernel_2,0,0,xilinx:kcu1500:4ddr-xpr:4.0-0,303.338,76.6072,1:1:1,1:1:1,
+7124960,gemxKernel_1,0,0,xilinx:kcu1500:4ddr-xpr:4.0-0,288.713,76.5905,1:1:1,1:1:1,
+7355456,gemxKernel_3,0,0,xilinx:kcu1500:4ddr-xpr:4.0-0,303.372,76.5884,1:1:1,1:1:1,
+
+
+Top Buffer Writes
+Buffer Address,Context ID,Command Queue ID,Start Time (ms),Duration (ms),Buffer Size (KB),Writing Rate(MB/s),
+7355744,0,0,273.248,15.355650,25174,1639.397616,
+7355952,0,0,273.372,15.227440,25174,1653.200801,
+7123872,0,0,288.609,14.615844,25174,1722.378537,
+7124144,0,0,288.614,14.606678,25174,1723.459366,
+
+
+Top Buffer Reads
+Buffer Address,Context ID,Command Queue ID,Start Time (ms),Duration (ms),Buffer Size (KB),Reading Rate(MB/s),
+7123872,0,0,380.141,14.675096,25174,1715.424281,
+7124144,0,0,380.15,14.638636,25174,1719.696835,
+7355744,0,0,365.48,14.552635,25174,1729.859644,
+7355952,0,0,365.503,14.538302,25174,1731.565075,
+
+
+PRC Parameters
+Parameter,Element,Value,
+DEVICE_EXEC_TIME,xilinx:kcu1500:4ddr-xpr:4.0-0,91.285758,
+CU_CALLS,xilinx:kcu1500:4ddr-xpr:4.0-0|gemxKernel_0,1,
+CU_CALLS,xilinx:kcu1500:4ddr-xpr:4.0-0|gemxKernel_1,1,
+CU_CALLS,xilinx:kcu1500:4ddr-xpr:4.0-0|gemxKernel_2,1,
+CU_CALLS,xilinx:kcu1500:4ddr-xpr:4.0-0|gemxKernel_3,1,
+MEMORY_BIT_WIDTH,xilinx:kcu1500:4ddr-xpr:4.0-0,512,
+
+

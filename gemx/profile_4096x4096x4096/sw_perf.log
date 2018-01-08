@@ -1,0 +1,23 @@
+env XCL_EMULATION_MODE=false LD_LIBRARY_PATH=/local/utils/xilinx/SDx/2017.1/lib/lnx64.o:/usr/lib/x86_64-linux-gnu XILINX_OPENCL=/local/utils/xilinx/kcu1500_xbinst_2017.1/x
+binst out_host/gemx_api_gemm.exe out_hw_4CUs_110MHz_4096DSPs_16bit/gemx.xclbin 4096 4096 4096
+
+number of memory pages allocated for one kernel: 24578
+
+INFO: created kernels
+loadXclbin  229.402765 msec
+WARNING: unaligned host pointer detected, this leads to extra memcpy
+WARNING: unaligned host pointer detected, this leads to extra memcpy
+WARNING: unaligned host pointer detected, this leads to extra memcpy
+WARNING: unaligned host pointer detected, this leads to extra memcpy
+created buffers  134.135896 msec
+INFO: transferred data to FPGA
+copyToFpga  0.606011 msec
+INFO: Executed kernel
+callKernel  1.204313 msec
+INFO: Transferred data from FPGA
+copyFromFpga  755.003821 msec
+total  1120.384223 msec
+subtotalFpga  756.864146 msec
+
+DATA_CSV:,DdrWidth,Freq,M,K,N,Ops,KernelCycles,TimeKernelMs,TimeApiMs,EffKernelPct,EffApiPct,PerfKernelTops,PerfApiTops
+DATA_CSV:,32,110.000000,4096,4096,4096,549755813888,67142308,610.384618,756.864146,99.950189,80.606353,0.900671,0.726360
