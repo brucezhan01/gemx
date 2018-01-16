@@ -240,6 +240,7 @@ int sizeof_array(T (&)[N]) {
     return N;
 }
 
+#if TEST_SDX
 void print_platform_info(boost::compute::platform const &platform) {
     for (int i = 0; i < sizeof_array(platform_info); ++i) {
         std::string str = std::move(platform.get_info<std::string>(platform_info[i].first));
@@ -425,6 +426,7 @@ void print_device_info(boost::compute::device const &device) {
         field[0] = '\0';
     }
 }
+#endif
 
 int main(int argc, char** argv)
 {
@@ -451,11 +453,14 @@ int main(int argc, char** argv)
   else {
 	l_kernelNameId = l_kernelId;
   }*/
+#if TEST_SDX
   boost::compute::device device = boost::compute::system::default_device();
   //std::cout << "Device: " << device.name() << std::endl;
   //std::cout << "Platform: " << device.platform().name() << std::endl;
   print_platform_info(device.platform());
   print_device_info(device);
+#endif
+
   printf("GEMX:   %s  %s  %s %s\n",
          argv[0], l_xclbinFile.c_str(), l_binFile.c_str(), l_binFileOut.c_str());
   
@@ -538,7 +543,7 @@ int main(int argc, char** argv)
   
   // Write out the received data
  for (int i=0; i<GEMX_numKernels; ++i) {
-    std::size_t pos0 = l_binFileOut.find("/");
+    std::size_t pos0 = l_binFileOut.find("./");
     std::size_t pos1 = l_binFileOut.find("app_out");
     std::size_t pos2 = l_binFileOut.find(".bin");
     //std::string binFileOutName = l_binFileOut.substr(0,10) + std::to_string(i) + l_binFileOut.substr(10,4);

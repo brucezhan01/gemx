@@ -54,9 +54,9 @@ array set opt {
   argInstrWidth   8   
   numInstr       16
   numKernels      1
-  runGemv         1
+  runGemv         0
   runGemm         1
-  runTransp       1
+  runTransp       0
   runSpmv         0
   gemvkVectorBlocks 512
   gemvmVectorBlocks 512
@@ -109,7 +109,8 @@ set XILINX_VIVADO $env(XILINX_VIVADO)
 #set BOOST_LIB /public/bugcases/CR/953000-953999/953328/boost_20170627/lib
 set BOOST_SRC ../boost/src
 set BOOST_LIB ../boost/lib
-set CFLAGS_K "-I $pwd/src  $OPT_FLAGS -D GEMX_kernelId=0 -D TEST_SDX=1"
+#set CFLAGS_K "-I $pwd/src  $OPT_FLAGS -D GEMX_kernelId=0 -D TEST_SDX=1"
+set CFLAGS_K "-I $pwd/src  $OPT_FLAGS -D GEMX_kernelId=0" 
 set CFLAGS_H "$CFLAGS_K -g -O2 -std=c++0x -DCL_USE_DEPRECATED_OPENCL_1_1_APIS -DBOOST_COMPUTE_DEBUG_KERNEL_COMPILATION -DBOOST_COMPUTE_HAVE_THREAD_LOCAL -DBOOST_COMPUTE_THREAD_SAFE -D FLOW_HLS_CSIM -I$BOOST_SRC -I${XILINX_SDX}/Vivado_HLS/include -I${XILINX_VIVADO}/include -I${XILINX_SDX}/runtime/include/1_2"
 
 
