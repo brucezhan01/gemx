@@ -46,7 +46,7 @@ GEMX_gemvkVectorBlocks  = 512
 GEMX_gemvmVectorBlocks  = 512
 GEMX_gemvmGroups   =  1
 
-GEMX_argInstrWidth=1 
+#GEMX_argInstrWidth=1 
 
 GEMX_gemmMeshRows  = $(GEMX_ddrWidth) 
 GEMX_gemmMeshCols  = $(GEMX_ddrWidth)
@@ -71,7 +71,8 @@ GEMX_spmvColAddIdxBits  =    2
 
 
 GEMX_argPipeline   =  2
-GEMX_part          = ku115
+#GEMX_part          = ku115
+GEMX_part          = kcu1500
 GEMX_kernelHlsFreq	   = 250 
 GEMX_kernelVivadoFreq  = 250
 # How many kernels to replicate in the accelerator (use 1 to 4)
@@ -80,9 +81,9 @@ GEMX_useURAM	   = 0
 # What engines get included in each accelerator kernel (use 0 or 1)
 # The more engines you include the more catability you get but P&R
 # P&R becomes more difficult thus you get lower Fmax
-GEMX_runGemv = 1
+GEMX_runGemv = 0
 GEMX_runGemm = 1
-GEMX_runTransp = 1
+GEMX_runTransp = 0
 GEMX_runSpmv = 0
 
 # Explorer mode off - Placer failed in 2017.3_sdx on 2 sample designs
