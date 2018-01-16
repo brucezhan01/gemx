@@ -1,0 +1,68 @@
+
+****** Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2017.4 (64-bit)
+  **** SW Build 2086221 on Fri Dec 15 20:54:30 MST 2017
+  **** IP Build 2085800 on Fri Dec 15 22:25:07 MST 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source /home/tools/xilinx/vivado_2017.4/Vivado/2017.4/scripts/vivado_hls/hls.tcl -notrace
+INFO: [HLS 200-10] Running '/home/tools/xilinx/vivado_2017.4/Vivado/2017.4/bin/unwrapped/lnx64.o/vivado_hls'
+INFO: [HLS 200-10] For user 'bzhan' on host 'sc-sim-204-046.nvidia.com' (Linux_x86_64 version 4.1.15.pnotify) on Mon Jan 15 20:58:32 PST 2018
+INFO: [HLS 200-10] On os "CentOS release 6.8 (Final)"
+INFO: [HLS 200-10] In directory '/home/scratch.bzhan_t186/xilinx_fpga/gemx/gemx/gemx'
+  Setting CONFIG  doCsim  1
+  Setting CONFIG  doRTLsynth  0
+Final CONFIG
+  Using CONFIG  argInstrWidth  8
+  Using CONFIG  argPipeline  2
+  Using CONFIG  dataEqIntType  short
+  Using CONFIG  dataType  short
+  Using CONFIG  ddrWidth  4
+  Using CONFIG  doCsim  1
+  Using CONFIG  doRTLsim  0
+  Using CONFIG  doRTLsynth  0
+  Using CONFIG  gemmKBlocks  2
+  Using CONFIG  gemmMBlocks  1
+  Using CONFIG  gemmMeshCols  4
+  Using CONFIG  gemmMeshDepth  4
+  Using CONFIG  gemmMeshRows  4
+  Using CONFIG  gemmNBlocks  1
+  Using CONFIG  gemvkVectorBlocks  512
+  Using CONFIG  gemvmGroups  1
+  Using CONFIG  gemvmVectorBlocks  512
+  Using CONFIG  numInstr  16
+  Using CONFIG  numKernels  1
+  Using CONFIG  part  kcu1500
+  Using CONFIG  runGemm  1
+  Using CONFIG  runGemv  0
+  Using CONFIG  runSpmv  0
+  Using CONFIG  runTransp  0
+  Using CONFIG  splitMesh  0
+  Using CONFIG  spmvColAddIdxBits  0
+  Using CONFIG  spmvFloatPerDesc  4
+  Using CONFIG  spmvMacGroups  4
+  Using CONFIG  spmvNumCblocks  1024
+  Using CONFIG  spmvPadA  1
+  Using CONFIG  spmvWidth  1
+  Using CONFIG  spmvkVectorBlocks  512
+  Using CONFIG  transpBlocks  1
+INFO: [HLS 200-10] Opening and resetting project '/home/scratch.bzhan_t186/xilinx_fpga/gemx/gemx/gemx/prj_hls_kcu1500_4x4'.
+INFO: [HLS 200-10] Adding design file 'src/gemx_kernel.cpp' to the project
+INFO: [HLS 200-10] Adding test bench file 'src/gemx_main.cpp' to the project
+INFO: [HLS 200-10] Opening and resetting solution '/home/scratch.bzhan_t186/xilinx_fpga/gemx/gemx/gemx/prj_hls_kcu1500_4x4/solution1'.
+INFO: [HLS 200-10] Cleaning up the solution database.
+WARNING: [ANALYSIS 214-1] Skip long-run-time warning caused by lots of load/store instructions.
+INFO: [HLS 200-10] Setting target device to 'xcku115-flvb2104-2-e'
+INFO: [SYN 201-201] Setting up clock 'default' with a period of 3.33333ns.
+***** C SIMULATION *****
+INFO: [SIM 211-2] *************** CSIM start ***************
+INFO: [SIM 211-4] CSIM will launch GCC as the compiler.
+   Compiling ../../../../src/gemx_main.cpp in debug mode
+   Compiling ../../../../src/gemx_kernel.cpp in debug mode
+   Generating csim.exe
+GEMX:   ./csim.exe  gemx.xclbin  /home/scratch.bzhan_t186/xilinx_fpga/gemx/gemx/gemx/out_host/app.bin /home/scratch.bzhan_t186/xilinx_fpga/gemx/gemx/gemx/prj_hls_kcu1500_4x4/app_out.bin
+INFO: loading /home/scratch.bzhan_t186/xilinx_fpga/gemx/gemx/gemx/out_host/app.bin of size 36864
+INFO: loaded 36864 bytes from /home/scratch.bzhan_t186/xilinx_fpga/gemx/gemx/gemx/out_host/app.bin
+INFO: wrote 36864 bytes to app_out0.bin
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [SIM 211-3] *************** CSIM finish ***************
+INFO: [Common 17-206] Exiting vivado_hls at Mon Jan 15 20:58:39 2018...
